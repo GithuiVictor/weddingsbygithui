@@ -1,0 +1,7 @@
+{
+  "name": "Weddings by Githui - Luxury Wedding Cinematography",
+  "description": "A high-end, elegant web experience for Weddings by Githui, featuring AI-powered cinematography consulting.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
