@@ -72,3 +72,47 @@ export const generateWeddingVisual = async (prompt: string) => {
     throw error;
   }
 };
+
+/**
+ * Fetches Google Reviews using Google Maps grounding.
+ * Extracts URLs from groundingChunks to provide verified links as per guidelines.
+ * Note: Maps grounding requires a Gemini 2.5 series model.
+ */
+export const fetchGoogleReviews = async (businessName: string, latLng?: { latitude: number, longitude: number }) => {
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash-lite-latest",
+      contents: `Retrieve and summarize the most prominent Google Reviews for "${businessName}". Focus on the artistic quality of wedding cinematography and the premium client experience. Use a sophisticated, brand-aligned tone.`,
+      config: {
+        tools: [{ googleMaps: {} }],
+        toolConfig: latLng ? {
+          retrievalConfig: {
+            latLng: {
+              latitude: latLng.latitude,
+              longitude: latLng.longitude
+            }
+          }
+        } : undefined
+      },
+    });
+
+    const text = response.text || "Our clients consistently praise our dedication to cinematic excellence and the personalized nature of our luxury service.";
+    
+    // Extracting place URLs from groundingChunks to display verified links on the web app.
+    const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
+    const links = groundingChunks
+      .filter((chunk: any) => chunk.maps)
+      .map((chunk: any) => ({
+        uri: chunk.maps.uri,
+        title: chunk.maps.title
+      }));
+
+    return { text, links };
+  } catch (error) {
+    console.error("Google Maps Grounding Error:", error);
+    return {
+      text: "Our legacy is reflected in the words of those who have trusted us with their most precious moments. We invite you to explore our verified testimonials on Google Maps.",
+      links: []
+    };
+  }
+};

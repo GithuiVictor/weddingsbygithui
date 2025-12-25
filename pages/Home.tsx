@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, Heart, MapPin, Play, Users, Camera, Music, Film, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Testimonials from '../components/Testimonials';
 
 interface FeaturedVideo {
   id: string;
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.25], [1, 1.05]);
 
-  // Featured Films Data with YouTube Thumbnails
+  // Featured Films Data
   const featuredFilms: FeaturedVideo[] = [
     {
       id: '1',
@@ -96,7 +97,7 @@ const Home: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Immersive Cinematic Hero */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80 z-10" />
@@ -155,7 +156,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand Essence Section */}
+      {/* Standard Section */}
       <section className="py-40 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
@@ -202,7 +203,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Meet the Founder & The Team Section */}
+      {/* Team Section */}
       <section className="py-40 px-6 bg-[#FAF9F6] relative z-10 overflow-hidden">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-24 items-start">
@@ -229,41 +230,21 @@ const Home: React.FC = () => {
                   <p className="text-neutral-500 text-lg leading-relaxed font-light">
                     Founded by lead artist Victor Githui, our studio has evolved into a tight-knit collective of specialized talent. Victor personally directs every project, ensuring his signature editorial eye is the guiding force.
                   </p>
-                  <p className="text-neutral-500 text-lg leading-relaxed font-light">
-                    He is joined by a hand-picked ensemble of elite cinematographers, award-winning sound designers, and colorists who share a singular obsession with perfection and luxury aesthetics.
-                  </p>
                 </div>
               </div>
 
-              {/* Team Specializations */}
               <div className="grid grid-cols-2 gap-8 pt-8">
                 <div className="space-y-3">
                   <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center text-[#c5a059]">
                     <Camera size={18} />
                   </div>
                   <h4 className="font-serif text-lg text-neutral-900">Cinematographers</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">Discreet observers trained in the art of 35mm-style composition.</p>
                 </div>
                 <div className="space-y-3">
                   <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center text-[#c5a059]">
                     <Music size={18} />
                   </div>
                   <h4 className="font-serif text-lg text-neutral-900">Sound Designers</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">Capturing the intimate whispers and symphonic moments of your day.</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center text-[#c5a059]">
-                    <Film size={18} />
-                  </div>
-                  <h4 className="font-serif text-lg text-neutral-900">Editor & Colorists</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">Crafting the narrative rhythm and ensuring a timeless, elegant palette.</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center text-[#c5a059]">
-                    <Users size={18} />
-                  </div>
-                  <h4 className="font-serif text-lg text-neutral-900">Travel Concierge</h4>
-                  <p className="text-xs text-neutral-400 font-light leading-relaxed">Handling logistics for destination celebrations across the globe.</p>
                 </div>
               </div>
 
@@ -286,24 +267,15 @@ const Home: React.FC = () => {
                 <img 
                   src="https://res.cloudinary.com/emacon-production/image/upload/v1766662897/Weddings%20By%20Githui/Gemini_Generated_Image_4c4l8k4c4l8k4c4l_i7hnrg.png" 
                   className="w-full h-full object-cover" 
-                  alt="Victor Githui - Lead Cinematographer" 
+                  alt="Victor Githui" 
                 />
-                <div className="absolute inset-0 bg-neutral-900/10"></div>
-                <div className="absolute bottom-10 left-10 text-white">
-                  <p className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-70 mb-2">Lead Artist</p>
-                  <h4 className="text-3xl font-serif">Victor Githui</h4>
-                </div>
               </motion.div>
-              
-              {/* Decorative Elements */}
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#c5a059]/5 rounded-full blur-3xl -z-0"></div>
-              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#c5a059]/10 rounded-full blur-2xl -z-0"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Film Gallery Section */}
+      {/* Gallery Section */}
       <section className="py-32 bg-white">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-24">
@@ -311,9 +283,6 @@ const Home: React.FC = () => {
              <h2 className="text-4xl md:text-5xl font-serif text-neutral-900 max-w-4xl mx-auto leading-tight mb-8">
                Capturing your story with an uncompromising dedication to quality.
              </h2>
-             <p className="text-neutral-500 max-w-2xl mx-auto font-light italic text-lg leading-relaxed">
-               From your initial inquiry to the delivery of your wedding film, Weddings by Githui is committed to excellence at every step. For those who chase the lifestyle of dreams, value connections between family and friends, and live life celebrating, Weddings by Githui is the film house for you.
-             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-16">
@@ -327,33 +296,19 @@ const Home: React.FC = () => {
                 className="group cursor-pointer text-left"
                 onClick={() => setSelectedVideo(film)}
               >
-                {/* Thumbnail Container */}
                 <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl relative group bg-neutral-100">
-                  <img 
-                    src={film.thumbnail} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                    alt={film.couple} 
-                  />
-                  {/* Play Overlay */}
+                  <img src={film.thumbnail} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt={film.couple} />
                   <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-neutral-900/40 transition-all flex items-center justify-center">
-                    <motion.div 
-                      whileHover={{ scale: 1.1 }}
-                      className="w-20 h-20 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0"
-                    >
+                    <div className="w-20 h-20 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500">
                       <Play size={24} fill="white" className="ml-1" />
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
-
-                {/* Info Section */}
                 <div className="px-4 space-y-2">
                   <h3 className="text-3xl font-serif text-neutral-900 group-hover:text-[#c5a059] transition-colors">{film.couple}</h3>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex items-center gap-2 text-neutral-400">
-                      <MapPin size={10} className="text-[#c5a059]" />
-                      <span className="text-[10px] uppercase tracking-[0.2em] font-medium">{film.location}</span>
-                    </div>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-300 font-bold ml-4">{film.date}</p>
+                  <div className="flex items-center gap-2 text-neutral-400">
+                    <MapPin size={10} className="text-[#c5a059]" />
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-medium">{film.location}</span>
                   </div>
                 </div>
               </motion.div>
@@ -362,49 +317,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Destination Showcase */}
-      <section className="py-40 bg-neutral-900 text-white overflow-hidden relative">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl">
-            <span className="text-[#c5a059] uppercase tracking-[0.4em] text-[10px] font-bold block mb-6">Global Concierge</span>
-            <h2 className="text-5xl md:text-8xl font-serif leading-tight mb-12">Wherever your heart <br /> <span className="italic">leads you.</span></h2>
-            <div className="grid md:grid-cols-2 gap-16">
-              <p className="text-neutral-400 text-lg font-light leading-relaxed">
-                From the lavender fields of Provence to the cliffs of Santorini, our team travels worldwide to capture love in its most exotic forms. We handle all logistics, so you can focus on the moment.
-              </p>
-              <div className="space-y-4">
-                {['The Italian Lakes', 'Parisian Elopements', 'Scottish Highlands', 'Balinese Escapes'].map((loc, i) => (
-                  <div key={i} className="flex items-center gap-4 group cursor-pointer border-b border-white/5 pb-4">
-                    <MapPin size={14} className="text-[#c5a059]" />
-                    <span className="text-lg font-serif group-hover:text-[#c5a059] transition-all">{loc}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-30 grayscale pointer-events-none">
-          <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&q=80&w=1200" className="h-full object-cover" alt="Travel" />
-        </div>
-      </section>
-
-      {/* Featured Testimonial */}
-      <section className="py-40 bg-[#FAF9F6]">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="max-w-3xl mx-auto space-y-12"
-          >
-            <Heart className="text-[#c5a059] mx-auto opacity-30" size={40} strokeWidth={1} />
-            <p className="text-3xl md:text-4xl font-serif italic text-neutral-800 leading-relaxed">
-              "Working with Weddings by Githui was the single best investment of our wedding. They captured the subtle glances and the quiet whispers that we didn't even realize were being filmed. Our video is a masterpiece."
-            </p>
-            <div className="flex flex-col items-center gap-2">
-              <span className="uppercase tracking-[0.4em] text-[10px] font-bold text-neutral-900">Julian & Sarah</span>
-              <span className="text-neutral-500 text-[9px] uppercase tracking-[0.2em]">Lake Como, Italy</span>
-            </div>
-          </motion.div>
+      {/* Rotating Testimonials Section */}
+      <section className="py-40 bg-[#FAF9F6] border-t border-neutral-100">
+        <div className="container mx-auto px-6">
+          <Testimonials />
         </div>
       </section>
     </div>

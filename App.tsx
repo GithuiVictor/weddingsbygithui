@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram, Facebook, Youtube, Mail, Phone, MapPin, ChevronRight, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X } from 'lucide-react';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -11,7 +11,7 @@ import Packages from './pages/Packages';
 import Contact from './pages/Contact';
 import AIConsultant from './components/AIConsultant';
 import Footer from './components/Footer';
-import ContactForm from './components/ContactForm';
+import ReservationSection from './components/ReservationSection';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +31,9 @@ const Navbar = () => {
     { label: 'Our Story', path: '/about' },
   ];
 
-  // Determine if we should show the solid/dark version of the navbar.
   const isHomePage = location.pathname === '/';
   const showDarkStyles = scrolled || !isHomePage;
 
-  // Logo URLs provided by the user
   const logoTransparentBg = "https://res.cloudinary.com/emacon-production/image/upload/v1766659803/Weddings%20By%20Githui/Black_Gold_Aesthetic_Luxury_Hijab_Store_Circle_Logo_-_3-removebg-preview_bj5h09.png";
   const logoWhiteBg = "https://res.cloudinary.com/emacon-production/image/upload/v1766659802/Weddings%20By%20Githui/Black_Gold_Aesthetic_Luxury_Hijab_Store_Circle_Logo_-_2-removebg-preview_dxxaxc.png";
 
@@ -45,13 +43,10 @@ const Navbar = () => {
         <Link to="/" className="flex items-center group">
           <motion.div
             initial={false}
-            animate={{ 
-              scale: showDarkStyles ? 0.7 : 1,
-            }}
+            animate={{ scale: showDarkStyles ? 0.7 : 1 }}
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            {/* The Logo Image selection based on background state */}
             <img 
               src={showDarkStyles ? logoWhiteBg : logoTransparentBg} 
               alt="Weddings by Githui Logo" 
@@ -60,7 +55,6 @@ const Navbar = () => {
           </motion.div>
         </Link>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-10">
           {navItems.map((item) => (
             <Link
@@ -80,13 +74,11 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
         <button className={`${showDarkStyles ? 'text-neutral-900' : 'text-white'} lg:hidden`} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -150,19 +142,9 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        
-        {/* Quote Request Section for all pages */}
-        <section className="bg-[#FAF9F6] py-32 px-6 border-t border-neutral-100">
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center mb-16">
-              <span className="text-[#c5a059] uppercase tracking-[0.4em] text-[10px] font-bold block mb-4">Reservations</span>
-              <h2 className="text-5xl md:text-6xl font-serif mb-6 text-neutral-900">Request a Bespoke Proposal</h2>
-              <p className="text-neutral-500 max-w-lg mx-auto italic font-light">Tell us more about your special day and let us craft a visual legacy that echoes through generations.</p>
-            </div>
-            <ContactForm />
-          </div>
-        </section>
 
+        <ReservationSection />
+        
         <Footer />
         <AIConsultant />
       </div>
