@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import ContactForm from './ContactForm';
+import ContactForm from './ContactForm.tsx';
 
 const ReservationSection: React.FC = () => {
   const location = useLocation();

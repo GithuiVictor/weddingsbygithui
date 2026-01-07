@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Testimonials from '../components/Testimonials.tsx';
 
 const About: React.FC = () => {
   return (
@@ -46,21 +47,32 @@ const About: React.FC = () => {
         </section>
 
         <section className="py-24 border-t border-neutral-100">
-          <h2 className="text-4xl font-serif text-center mb-16 text-neutral-900">The Signature Process</h2>
-          <div className="grid md:grid-cols-4 gap-12">
+          <div className="text-center mb-16 space-y-4">
+             <span className="text-[#c5a059] uppercase tracking-[0.3em] text-[10px] font-bold block">How We Work</span>
+             <h2 className="text-4xl md:text-5xl font-serif text-neutral-900">The Signature Process</h2>
+          </div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8">
             {[
               { step: '01', title: 'Consultation', desc: 'We meet to understand your vision, style preferences, and wedding day flow.' },
-              { step: '02', title: 'Production', desc: 'A discreet presence capturing moments as they happen without intrusion.' },
-              { step: '03', title: 'Post-Production', desc: 'Meticulous editing, sound design, and color grading by our in-house experts.' },
-              { step: '04', title: 'The Reveal', desc: 'Your films delivered in high definition via our signature digital gallery.' }
+              { step: '02', title: 'Agreement & Deposit', desc: 'We formalize the commission with a signed agreement and deposit to secure your date.' },
+              { step: '03', title: 'Production', desc: 'A discreet presence capturing moments as they happen without intrusion.' },
+              { step: '04', title: 'Post-Production', desc: 'Meticulous editing, sound design, and color grading by our in-house experts.' },
+              { step: '05', title: 'The Reveal', desc: 'Your films delivered in high definition via our signature digital gallery.' }
             ].map((item, idx) => (
               <div key={idx} className="space-y-4 text-center">
-                <div className="text-4xl font-serif text-neutral-100">{item.step}</div>
-                <h4 className="text-xl font-serif text-[#c5a059]">{item.title}</h4>
-                <p className="text-neutral-500 text-sm leading-relaxed font-light">{item.desc}</p>
+                <div className="text-4xl font-serif text-neutral-200">{item.step}</div>
+                <h4 className="text-lg font-serif text-[#c5a059] leading-tight h-12 flex items-center justify-center">{item.title}</h4>
+                <p className="text-neutral-500 text-xs leading-relaxed font-light px-2">{item.desc}</p>
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="py-24 border-t border-neutral-100">
+           <div className="text-center mb-12">
+             <span className="text-[#c5a059] uppercase tracking-[0.3em] text-[10px] font-bold block">Testimonials</span>
+           </div>
+           <Testimonials />
         </section>
       </div>
     </div>

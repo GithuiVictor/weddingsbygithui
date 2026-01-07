@@ -1,17 +1,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
-import Packages from './pages/Packages';
-import Contact from './pages/Contact';
-import AIConsultant from './components/AIConsultant';
-import Footer from './components/Footer';
-import ReservationSection from './components/ReservationSection';
+import Home from './pages/Home.tsx';
+import About from './pages/About.tsx';
+import Portfolio from './pages/Portfolio.tsx';
+import Investment from './pages/Investment.tsx';
+import Contact from './pages/Contact.tsx';
+import FAQs from './pages/FAQs.tsx';
+import AIConsultant from './components/AIConsultant.tsx';
+import Footer from './components/Footer.tsx';
+import ReservationSection from './components/ReservationSection.tsx';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +27,10 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
+    { label: 'About us', path: '/about' },
     { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Collections', path: '/packages' },
-    { label: 'Our Story', path: '/about' },
+    { label: 'Investment', path: '/investment' },
+    { label: 'FAQs', path: '/faqs' },
   ];
 
   const isHomePage = location.pathname === '/';
@@ -138,7 +140,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/packages" element={<Packages />} />
+            <Route path="/investment" element={<Investment />} />
+            <Route path="/faqs" element={<FAQs />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

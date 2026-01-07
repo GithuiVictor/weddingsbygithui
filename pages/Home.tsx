@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, Heart, MapPin, Play, Users, Camera, Music, Film, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Testimonials from '../components/Testimonials';
+import Testimonials from '../components/Testimonials.tsx';
 
 interface FeaturedVideo {
   id: string;
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.25], [1, 1.05]);
 
-  // Featured Films Data
+  // Featured Films Data - Top 3 from the new list
   const featuredFilms: FeaturedVideo[] = [
     {
       id: '1',
@@ -47,8 +47,8 @@ const Home: React.FC = () => {
     {
       id: '3',
       couple: 'Nancy & Cobih',
-      location: 'Enkishon Gardens, Limuru',
-      date: '23rd August 2025',
+      location: 'Enkishon Gardens, Nairobi',
+      date: '4th January 2025',
       thumbnail: 'https://img.youtube.com/vi/UsEVrJXHC84/maxresdefault.jpg',
       youtubeId: 'UsEVrJXHC84'
     }

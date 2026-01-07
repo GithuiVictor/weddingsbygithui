@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, Send, Loader2, MessageSquare, Heart } from 'lucide-react';
-import { getAIResponse } from '../services/geminiService';
+import { getAIResponse } from '../services/geminiService.ts';
 
 const AIConsultant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
